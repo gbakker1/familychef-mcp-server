@@ -1,0 +1,21 @@
+{
+  "name": "@familychef/mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for FamilyChef — lets AI agents manage recipes, pantry, meal planning, and shopping lists",
+  "main": "index.js",
+  "bin": {
+    "familychef-mcp": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": ["mcp", "familychef", "recipes", "meal-planning", "ai", "claude"],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^4.3.6"
+  }
+}
