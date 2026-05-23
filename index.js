@@ -1,17 +1,17 @@
-#!/usr/bin/env node
-// @familychef/mcp-server — stdio bridge to the FamilyChef API
+﻿#!/usr/bin/env node
+// @copantry/mcp-server — stdio bridge to the Copantry API
 // Runs as a local stdio process; forwards all tool calls to the hosted HTTP MCP endpoint.
 //
 // Usage (Claude Desktop / Cursor / Windsurf):
-//   Set FAMILYCHEF_API_KEY and optionally FAMILYCHEF_API_URL in env.
+//   Set COPANTRY_API_KEY and optionally COPANTRY_API_URL in env.
 //
 // Claude Desktop config (~/.config/claude/claude_desktop_config.json):
 //   {
 //     "mcpServers": {
-//       "familychef": {
+//       "copantry": {
 //         "command": "npx",
-//         "args": ["-y", "@familychef/mcp-server"],
-//         "env": { "FAMILYCHEF_API_KEY": "fc_live_..." }
+//         "args": ["-y", "@copantry/mcp-server"],
+//         "env": { "COPANTRY_API_KEY": "fc_live_..." }
 //       }
 //     }
 //   }
@@ -22,11 +22,11 @@ const { McpServer } = require('@modelcontextprotocol/sdk/server/mcp.js');
 const { StdioServerTransport } = require('@modelcontextprotocol/sdk/server/stdio.js');
 const { z } = require('zod');
 
-const API_KEY = process.env.FAMILYCHEF_API_KEY;
-const API_URL = (process.env.FAMILYCHEF_API_URL || 'https://app.familychef.com/familychef/api').replace(/\/$/, '');
+const API_KEY = process.env.COPANTRY_API_KEY;
+const API_URL = (process.env.COPANTRY_API_URL || 'https://api.copantry.com').replace(/\/$/, '');
 
 if (!API_KEY) {
-    process.stderr.write('[familychef-mcp] FAMILYCHEF_API_KEY is required.\n');
+    process.stderr.write('[copantry-mcp] COPANTRY_API_KEY is required.\n');
     process.exit(1);
 }
 
@@ -60,7 +60,7 @@ function err(msg) {
 
 // ── Server ─────────────────────────────────────────────────────────────────────
 
-const server = new McpServer({ name: 'familychef', version: '1.0.0' });
+const server = new McpServer({ name: 'Copantry', version: '1.0.0' });
 
 // ── RECIPES ───────────────────────────────────────────────────────────────────
 
@@ -230,7 +230,7 @@ server.tool(
 
 server.tool(
     'get_plan',
-    'Check the current FamilyChef subscription plan and remaining API call quota for this month.',
+    'Check the current Copantry subscription plan and remaining API call quota for this month.',
     {},
     async () => {
         try {
@@ -279,10 +279,10 @@ server.prompt(
 async function main() {
     const transport = new StdioServerTransport();
     await server.connect(transport);
-    process.stderr.write('[familychef-mcp] Connected via stdio.\n');
+    process.stderr.write('[copantry-mcp] Connected via stdio.\n');
 }
 
 main().catch(e => {
-    process.stderr.write(`[familychef-mcp] Fatal: ${e.message}\n`);
+    process.stderr.write(`[copantry-mcp] Fatal: ${e.message}\n`);
     process.exit(1);
 });

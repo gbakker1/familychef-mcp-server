@@ -1,12 +1,12 @@
-# @familychef/mcp-server
+﻿# @copantry/mcp-server
 
-Connect Claude, Cursor, Windsurf, or any MCP-compatible AI to your [FamilyChef](https://app.familychef.com) household — search recipes, manage the pantry, plan meals, and generate shopping lists by talking to your AI.
+Connect Claude, Cursor, Windsurf, or any MCP-compatible AI to your [Copantry](https://copantry.com) household — search recipes, manage the pantry, plan meals, and generate shopping lists by talking to your AI.
 
 ## Quick start
 
 ### 1. Get your API key
 
-Go to **FamilyChef → AI Agent** (the robot icon in the sidebar), create an API key, and copy it.
+Go to **Copantry → AI Agent** (the robot icon in the sidebar), create an API key, and copy it.
 
 ### 2. Add to Claude Desktop
 
@@ -15,18 +15,18 @@ Edit `~/.config/claude/claude_desktop_config.json` (macOS/Linux) or `%APPDATA%\C
 ```json
 {
   "mcpServers": {
-    "familychef": {
+    "copantry": {
       "command": "npx",
-      "args": ["-y", "@familychef/mcp-server"],
+      "args": ["-y", "@copantry/mcp-server"],
       "env": {
-        "FAMILYCHEF_API_KEY": "fc_live_your_key_here"
+        "COPANTRY_API_KEY": "cp_live_your_key_here"
       }
     }
   }
 }
 ```
 
-Restart Claude Desktop — FamilyChef tools appear automatically.
+Restart Claude Desktop — Copantry tools appear automatically.
 
 ### Cursor / Windsurf
 
@@ -36,11 +36,11 @@ Add to `.cursor/mcp.json` or `.windsurf/mcp.json`:
 {
   "mcp": {
     "servers": {
-      "familychef": {
+      "copantry": {
         "command": "npx",
-        "args": ["-y", "@familychef/mcp-server"],
+        "args": ["-y", "@copantry/mcp-server"],
         "env": {
-          "FAMILYCHEF_API_KEY": "fc_live_your_key_here"
+          "COPANTRY_API_KEY": "cp_live_your_key_here"
         }
       }
     }
@@ -53,17 +53,17 @@ Add to `.cursor/mcp.json` or `.windsurf/mcp.json`:
 If your client supports HTTP transport, you can point it directly to the hosted endpoint — no npm install needed:
 
 ```
-URL:     https://app.familychef.com/familychef/api/mcp
+URL:     https://api.copantry.com/mcp
 Method:  POST
-Header:  Authorization: Bearer fc_live_your_key_here
+Header:  Authorization: Bearer cp_live_your_key_here
 ```
 
 ## Environment variables
 
 | Variable | Required | Description |
 |---|---|---|
-| `FAMILYCHEF_API_KEY` | Yes | Your API key from the AI Agent page |
-| `FAMILYCHEF_API_URL` | No | Override the API base URL (default: `https://app.familychef.com/familychef/api`) |
+| `COPANTRY_API_KEY` | Yes | Your API key from the AI Agent page |
+| `COPANTRY_API_URL` | No | Override the API base URL (default: `https://api.copantry.com`) |
 
 ## Available tools
 
@@ -99,7 +99,7 @@ Header:  Authorization: Bearer fc_live_your_key_here
 | Family | $9.99/mo | 10,000 |
 | Builder | $29/mo | 60,000 |
 
-Upgrade at [familychef.app/agent](https://app.familychef.com/familychef/agent).
+Upgrade at [copantry.com/agent](https://copantry.com/agent).
 
 ## License
 

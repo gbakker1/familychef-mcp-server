@@ -1,15 +1,15 @@
 {
-  "name": "@familychef/mcp-server",
+  "name": "@copantry/mcp-server",
   "version": "1.0.0",
-  "description": "MCP server for FamilyChef — lets AI agents manage recipes, pantry, meal planning, and shopping lists",
+  "description": "MCP server for Copantry — lets AI agents manage recipes, pantry, meal planning, and shopping lists",
   "main": "index.js",
   "bin": {
-    "familychef-mcp": "./index.js"
+    "copantry-mcp": "./index.js"
   },
   "scripts": {
     "start": "node index.js"
   },
-  "keywords": ["mcp", "familychef", "recipes", "meal-planning", "ai", "claude"],
+  "keywords": ["mcp", "copantry", "recipes", "meal-planning", "ai", "claude"],
   "license": "MIT",
   "engines": {
     "node": ">=18"
